@@ -3,10 +3,10 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
     database_host: ec2-54-228-251-254.eu-west-1.compute.amazonaws.com
-    database_port: 5432
-    database_name: symfony
+    database_port: ~
+    database_name: d3in7i2iat3473
     database_user: eubtjvrqxrfjch
-    database_password: c6db712f4d7b68f8305091d0a78718f936eb2ca894a89e3d983d5156690c312f
+    database_password: ~
     # You should uncomment this if you want to use pdo_sqlite
     #database_path: '%kernel.project_dir%/var/data/data.sqlite'
 

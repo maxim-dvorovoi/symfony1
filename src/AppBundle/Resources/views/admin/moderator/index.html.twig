@@ -1,0 +1,26 @@
+{% extends '@App/admin.layout.html.twig' %}
+
+{% block body %}
+    <div class="index">
+        <h1>Коментарии с категории политика</h1>
+        <br>
+        <div class="moderate">
+            {% if comments == [] %}
+                <h3>Коментариев на добавление нет</h3>
+            {% endif %}
+            <br>
+            {% for item in comments  %}
+                <h4>{{ item.comment }}</h4>
+                <form method="post">
+                    <button type="submit" name="add" value="{{ item.id }}">Добавить</button>
+                    <button type="submit" name="delete" value="{{ item.id }}">Удалить</button>
+                </form>
+                <br>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

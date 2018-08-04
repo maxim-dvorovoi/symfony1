@@ -1,0 +1,59 @@
+{% extends '@App/login.layout.html.twig' %}
+
+{% block title %} Post{{ post.id }} {% endblock %}
+
+{% block body %}
+    <div class="post_id">
+        <h2>{{ post.title }}</h2>
+
+        <hr>
+
+        <img src="{{ post.image }}">
+        <br><br>
+        {{ post.description }}
+        <br><br>
+
+        <p>Сейчас читают: </p> <p class="nowRead" id="nowRead"></p><br>
+        <p>Всего прочитали:  {{ post.views }} </p>
+        <p>Теги: <a href="{{ path('login_tags_item', {id: tag.id}) }}">{{ tag.name }}</a></p><br>
+
+        <h3>Напишите коментарий</h3>
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit">Отправить</button>
+        {{ form_end(form) }}
+        <br>
+
+        <h3>Коментарии:</h3>
+
+        {% if categoryId == 1 %}
+            (Коменатрии с категории политика проходят модерацию)
+        {% endif%}
+
+        {% if comments == [] %}
+            <p>Коментариев нет</p>
+        {% else %}
+        <br><br>
+            {% for comment in comments %}
+                <div>
+                    {{ comment.user.username }}: {{ comment.commentary }}; Оценка: {{ comment.votes }}
+                    <form method="post">
+                        <button type="submit" name="like" value="{{ comment.id }}">+</button>
+                        <button type="submit" name="dislike" value="{{ comment.id }}">-</button>
+                    </form>
+                </div>
+            <br>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        document.getElementById("nowRead").innerHTML = Math.floor(Math.random() * 4 +1);
+
+        var timerId = setInterval(function() {
+            document.getElementById("nowRead").innerHTML = Math.floor(Math.random() * 4 +1);
+        }, 5000);
+    </script>
+{% endblock %}

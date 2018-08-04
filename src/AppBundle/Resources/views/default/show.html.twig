@@ -1,0 +1,49 @@
+{% extends '@App/layout.html.twig' %}
+
+{% block title %} Post{{ post.id }} {% endblock %}
+
+{% block body %}
+    <div class="post_id">
+        <h2>{{ post.title }}</h2>
+
+        <hr>
+
+        <img src="{{ post.image }}">
+        <br><br>
+        {{ post.description }}
+        <br><br>
+        <p>Сейчас читают: </p><p class="nowRead" id="nowRead"></p> <br>
+        <p>Всего прочитали: {{ post.views }}</p>
+        {% if tag.id!=3 %}
+            <p>Теги: <a href="{{ path('tags_item', {id: tag.id}) }}">{{ tag.name }}</a></p><br>
+        {% endif%}
+        <p>Зарегестируйтесь и сможете оставлять коментарии</p>
+
+        <h3>Коментарии:</h3>
+
+        {% if comments == [] %}
+            <p>Коментариев нет</p>
+        {% else %}
+            {% for comment in comments %}
+                <div>
+                    {{ comment.user.username }}: {{ comment.commentary }}; Оценка: {{ comment.votes }}
+                    <form method="post">
+                        <button type="submit" name="like" value="{{ comment.id }}">+</button>
+                        <button type="submit" name="dislike" value="{{ comment.id }}">-</button>
+                    </form>
+                </div>
+                <br>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        document.getElementById("nowRead").innerHTML = Math.floor(Math.random() * 4 +1);
+
+        var timerId = setInterval(function() {
+            document.getElementById("nowRead").innerHTML = Math.floor(Math.random() * 4 +1);
+        }, 5000);
+    </script>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends '@App/layout.html.twig' %}
+
+{% block body %}
+    <div class="index">
+        <h1>Регистрация</h1><br>
+        <div class="registration">
+            {{ form_start(form) }}
+                {{ form_row(form.username) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.plainPassword.first) }}
+                {{ form_row(form.plainPassword.second) }}
+
+            <button type="submit">Register!</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

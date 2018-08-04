@@ -1,0 +1,65 @@
+{% extends '@App/admin.layout.html.twig' %}
+
+{% block title %} Post{{ post.id }} {% endblock %}
+
+{% block body %}
+    <div class="post_id">
+        <h2>{{ post.title }}</h2>
+
+        <hr>
+
+        <img src="{{ post.image }}">
+        <br><br>
+        {{ post.description }}
+        <br><br>
+
+        <p>Сейчас читают: </p> <p class="nowRead" id="nowRead"></p><br>
+        <p>Всего прочитали:  {{ post.views }} </p>
+        <p>Теги: <a href="{{ path('admin_tags_item', {id: tag.id}) }}">{{ tag.name }}</a></p><br>
+
+        <h3>Коментарии:</h3>
+
+        {% if comments == [] %}
+            <p>Коментариев нет</p>
+        {% else %}
+            {% for comment in comments %}
+                <div>
+                    {{ comment.user.username }}: {{ comment.commentary }}; Оценка: {{ comment.votes }} <button type="button" id="{{ comment.id }}" onclick="change()">Изменить</button>
+                    <form method="post">
+                        <button type="submit" name="like" value="{{ comment.id }}">+</button>
+                        <button type="submit" name="dislike" value="{{ comment.id }}">-</button>
+                    </form>
+                    <br>
+                    <form method="post">
+                        <input type="text" id="text{{ comment.id }}" name="text" value="{{ comment.commentary }}" style="visibility: hidden">
+                        <button type="submit" id="submit{{ comment.id }}" name="change" value="{{ comment.id }}" style="visibility: hidden">Отправить</button>
+                    </form>
+                    <br>
+                </div>
+            <br>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        document.getElementById("nowRead").innerHTML = Math.floor(Math.random() * 4 +1);
+
+        var timerId = setInterval(function() {
+            document.getElementById("nowRead").innerHTML = Math.floor(Math.random() * 4 +1);
+        }, 5000);
+    </script>
+
+    <script>
+        function change() {
+            var id = event.target.getAttribute("id")
+            document.getElementById(id).style.visibility = "hidden"
+            document.getElementById("text"+id).style.visibility = "visible"
+            document.getElementById("submit"+id).style.visibility = "visible"
+            document.getElementById("close"+id).style.visibility = "visible"
+        }
+    </script>
+
+
+{% endblock %}

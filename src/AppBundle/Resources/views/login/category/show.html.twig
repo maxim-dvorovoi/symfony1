@@ -1,0 +1,31 @@
+{% extends '@App/login.layout.html.twig' %}
+
+{% block body %}
+    <div class="index">
+        <h1>{{ category.name }}</h1>
+
+        <div class="category">
+            <div class="count">
+                Количество постов: {{ pagination.getTotalItemCount }}
+            </div>
+            <table>
+
+                {# table body #}
+                {% for article in pagination %}
+                    <tr {% if loop.index is odd %}class="color"{% endif %}>
+                        <td><a href="{{ path('login_post_item', {id:article.id}) }}"><h3>{{ article.title }}</h3></a></td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+            {# display navigation #}
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

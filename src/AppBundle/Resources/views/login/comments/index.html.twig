@@ -1,0 +1,29 @@
+{% extends '@App/login.layout.html.twig' %}
+
+{% block title %}Коментарии{% endblock %}
+
+{% block body %}
+    <div class="index">
+        <div class="category">
+
+            <div class="count">
+                <h2>Коментарии: {{ pagination.getTotalItemCount }}</h2>
+            </div>
+
+            <table>
+
+                {# table body #}
+                {% for comment in pagination %}
+                    <tr {% if loop.index is odd %}class="color"{% endif %}>
+                        <td><h4>{{ comment.user.username }}: {{ comment.commentary }}</h4></td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+            {# display navigation #}
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,203 @@
+.site {
+    width: 90%;
+    margin: 0 auto;
+}
+.main {
+    float: left;
+    width: 80%;
+}
+
+.createPost {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.createPost  {
+    width: 500px;
+    margin: 0 auto;
+}
+
+input#form_title {
+    width: 400px;
+    height: 30px;
+}
+
+input#form_description {
+    width: 404px;
+    height: 30px;
+}
+
+input#form_image {
+    width: 345px;
+    height: 30px;
+}
+
+.changes {
+    margin: 0 auto;
+    width: 150px;
+}
+
+.reklams {
+    float: left;
+    width: 10%;
+}
+
+.reklams > img {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+}
+
+.coupon {
+    color: white;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    margin-top: 300px;
+    visibility: hidden;
+    transition: 0.5s;
+
+}
+
+.banner {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: 500px;
+    background-image: url(https://climate.nasa.gov/assets/images_of_change/ioc_intro_image.png);
+    text-align: center;
+    transition: 1s;
+    color: white;
+}
+
+.price {
+    font-size: 20px;
+    transition: 0.5s;
+}
+
+.banner:hover > .price {
+    font-size: 25px;
+    color: red;
+}
+
+.banner:hover > a > .coupon {
+    margin-left: 100px;
+    background-color: #007bff;
+    visibility: visible;
+}
+
+.index {
+    margin-top: 60px;
+}
+
+.index > .blocks {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.index > h1 {
+    text-align: center;
+}
+
+.count {
+    text-align: center;
+}
+
+.registration{
+    margin: 0 auto;
+    width: 350px;
+}
+
+.category > table {
+    margin: 0 auto;
+}
+
+.navigation {
+    width: 100px;
+    margin: 0 auto;
+}
+
+.moderate {
+    text-align: center;
+}
+
+.w3-display-container {
+    width: 700px;
+    max-height: 500px;
+}
+
+.mySlides {
+    width: 700px;
+    max-height: 500px;
+}
+
+.blocks > .catText{
+    width: 350px;
+    margin: 10px;
+}
+
+.post_id {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.post_id > img {
+    width: 400px;
+}
+
+#mail {
+    background: rgba(102, 102, 102, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+#okno {
+    width: 300px;
+    height: 250px;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background: #fff;
+}
+#mail:target {display: block;}
+.close {
+    position: absolute;
+    margin-left: 32px;
+    height: 24px;
+    display: block;
+    border: 1px solid #000075;
+    padding: 0 12px;
+    padding-top: 3px;
+    margin-top: 10px;
+    text-decoration: none;
+    background: #f2f2f2;
+    font-size: 15px;
+    font-family: Arial;
+    cursor:pointer;
+}
+.close:hover {background: #e6e6ff;}
+
+.send {
+    position: absolute;
+    margin-left: 140px;
+    display: block;
+    border: 1px solid #000075;
+    padding: 0 12px;
+    margin-top: 10px;
+    text-decoration: none;
+    background: #f2f2f2;
+    font-size: 15px;
+    font-family: Arial;
+    cursor:pointer;
+}
+.send:hover {background: #e6e6ff;}

@@ -1,0 +1,107 @@
+{% extends '@App/layout.html.twig' %}
+
+{% block body %}
+    <div class="index">
+        <h1>Последние Новости</h1>
+
+        <br>
+
+        <div class="w3-content w3-display-container">
+
+            {% for post in indexNewsPosts %}
+                <div class="w3-display-container mySlides">
+                    <a href="{{ path('post_item', {id:post.id}) }}">
+                        <img src="{{ post.image }}" style="max-height: 500px; margin: 0 auto; display: block;">
+                        <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-black" style="text-align: center">
+                            {{ post.title }}
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+
+            <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+            <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+
+        </div>
+
+        <br>
+
+        <div class="blocks">
+            {% for category in categories %}
+                <div class="catText">
+                    <h2><a  href="{{ path('category_item', {id:category.id}) }}">{{ category.name }}</a></h2><br>
+
+                    {% if category.id == 1 %}
+                        {% for post in policyPosts %}
+                            <a href="{{ path('post_item', {id:post.id}) }}">{{post.title}}</a> <br>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if category.id == 2 %}
+                        {% for post in financeNewsPosts %}
+                            <a href="{{ path('post_item', {id:post.id}) }}">{{post.title}}</a> <br>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if category.id == 3 %}
+                        {% for post in financeForecPosts %}
+                            <a href="{{ path('post_item', {id:post.id}) }}">{{post.title}}</a> <br>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if category.id == 4 %}
+                        {% for post in economyPosts %}
+                            <a href="{{ path('post_item', {id:post.id}) }}">{{post.title}}</a> <br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <div class="catText">
+                <h2><p>Аналитика</p></h2>
+                {% for post in analiticsPosts %}
+                    <a href="{{ path('post_item', {id:post.id}) }}">{{post.title}}</a> <br>
+                {% endfor %}
+            </div>
+
+            <div class="catText">
+                <h2><p>Топ 3 Активных тем за сегодня:</p></h2>
+                {% for post in topNews %}
+                    <a href="{{ path('post_item', {id:post.post_id}) }}">{{post.title}}</a> <br>
+                {% endfor %}
+            </div>
+
+            <div class="catText">
+                <h2><p>Топ 5 Коментаторов:</p></h2>
+                {% for user in topComentators %}
+                    <a href="{{ path('comments_page', {id:user.user_id}) }}">{{user.username}}</a> <br>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            if (n > x.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = x.length}
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex-1].style.display = "block";
+        }
+    </script>
+{% endblock %}
+
+{% block stylesheets %}{% endblock %}

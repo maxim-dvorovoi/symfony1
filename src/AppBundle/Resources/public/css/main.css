@@ -2,9 +2,22 @@
     width: 90%;
     margin: 0 auto;
 }
+
+.fixed-top {
+    position: fixed;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    max-height: 500px;
+    margin: 0 auto;
+    display: block;
+}
+
 .main {
+    width: 100%;
     float: left;
-    width: 80%;
 }
 
 .createPost {
@@ -38,14 +51,13 @@ input#form_image {
 }
 
 .reklams {
-    float: left;
-    width: 10%;
+    position: absolute;
+    visibility: hidden;
+    height: 0;
 }
 
 .reklams > img {
-    display: block;
-    margin: 0 auto;
-    width: 100px;
+    height: 0;
 }
 
 .coupon {
@@ -59,31 +71,9 @@ input#form_image {
 
 }
 
-.banner {
-    display: block;
-    margin: 0 auto;
-    width: 100px;
-    height: 500px;
-    background-image: url(https://climate.nasa.gov/assets/images_of_change/ioc_intro_image.png);
-    text-align: center;
-    transition: 1s;
-    color: white;
-}
-
 .price {
     font-size: 20px;
     transition: 0.5s;
-}
-
-.banner:hover > .price {
-    font-size: 25px;
-    color: red;
-}
-
-.banner:hover > a > .coupon {
-    margin-left: 100px;
-    background-color: #007bff;
-    visibility: visible;
 }
 
 .index {
@@ -122,14 +112,16 @@ input#form_image {
     text-align: center;
 }
 
-.w3-display-container {
-    width: 700px;
-    max-height: 500px;
+.w3-content {
+    max-width:700px;
 }
 
-.mySlides {
-    width: 700px;
-    max-height: 500px;
+.w3-display-container {
+    max-width: 700px;
+}
+
+.w3-black, .w3-hover-black:hover{
+    background-color: #0e1011c4!important;
 }
 
 .blocks > .catText{
@@ -143,7 +135,7 @@ input#form_image {
 }
 
 .post_id > img {
-    width: 400px;
+    width: 100%;
 }
 
 #mail {
@@ -201,3 +193,71 @@ input#form_image {
     cursor:pointer;
 }
 .send:hover {background: #e6e6ff;}
+
+@media screen and (min-width: 770px) {
+    .w3-content {
+        width: 700px;
+    }
+
+    .w3-display-container {
+        margin: 0 auto;
+    }
+
+    .slide {
+        max-height: 500px;
+        max-width: 700px;
+        width: auto;
+    }
+
+    .post_id > img {
+        width: auto;
+        max-height: 500px;
+        max-width: 700px;
+    }
+
+}
+
+@media screen and (min-width: 1000px) {
+    .main {
+        width: 80%;
+    }
+
+    .reklams {
+        position: static;
+        visibility: visible;
+        float: left;
+        width: 10%;
+        height: auto;
+    }
+
+    .reklams > img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100px;
+        width: 100%;
+        height: auto;
+    }
+
+    .banner {
+        display: block;
+        margin: 0 auto;
+        max-width: 100px;
+        height: 500px;
+        width: 100%;
+        background-image: url(https://climate.nasa.gov/assets/images_of_change/ioc_intro_image.png);
+        text-align: center;
+        transition: 1s;
+        color: white;
+    }
+
+    .banner:hover > .price {
+        font-size: 25px;
+        color: red;
+    }
+
+    .banner:hover > a > .coupon {
+        margin-left: 100px;
+        background-color: #007bff;
+        visibility: visible;
+    }
+}

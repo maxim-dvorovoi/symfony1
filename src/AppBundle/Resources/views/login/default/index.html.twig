@@ -11,7 +11,7 @@
             {% for post in indexNewsPosts %}
                 <div class="w3-display-container mySlides">
                     <a href="{{ path('login_post_item', {id:post.id}) }}">
-                        <img src="{{ post.image }}" style="max-height: 500px; margin: 0 auto; display: block;">
+                        <img src="{{ post.image }}" class="slide" >
                         <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-black" style="text-align: center">
                             {{ post.title }}
                         </div>
